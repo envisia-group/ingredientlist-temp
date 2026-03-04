@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About IngredientList — Our Mission for Supplement Transparency</title>
+  <meta name="description" content="IngredientList is the free, independent supplement ingredient database. Learn about our mission to make supplement transparency accessible to everyone.">
+  <link rel="canonical" href="https://ingredientlist.com/about">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="About IngredientList — Our Mission for Supplement Transparency">
+  <meta property="og:description" content="We built the supplement database we wished existed. No reviews, no rankings, no sponsors — just the facts.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ingredientlist.com/about">
+
+  <!-- JSON-LD Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "name": "About IngredientList",
+    "url": "https://ingredientlist.com/about",
+    "description": "IngredientList is the free, independent supplement ingredient database built to make supplement transparency accessible to everyone.",
+    "mainEntity": {
+      "@type": "Organization",
+      "name": "IngredientList",
+      "url": "https://ingredientlist.com",
+      "description": "The free, independent supplement ingredient database."
+    }
+  }
+  </script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ========================================
+       RESET & BASE
+       ======================================== */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --accent: #0F766E;
+      --accent-dark: #0D5F59;
+      --accent-light: #CCFBF1;
+      --accent-bg: #F0FDFA;
+      --text: #111827;
+      --text-secondary: #374151;
+      --text-muted: #6B7280;
+      --text-light: #9CA3AF;
+      --bg: #FFFFFF;
+      --bg-subtle: #FAFAFA;
+      --border: #E5E7EB;
+      --border-light: #F3F4F6;
+
+      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-display: 'Instrument Serif', Georgia, serif;
+
+      --container: 1120px;
+      --container-narrow: 720px;
+      --section-spacing: clamp(80px, 10vw, 140px);
+      --gutter: clamp(20px, 5vw, 40px);
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.7;
+      font-size: 16px;
+      overflow-x: hidden;
+    }
+
+    /* ========================================
+       TOP ACCENT BAR
+       ======================================== */
+    .top-bar {
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), #14B8A6, var(--accent));
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+    }
+
+    /* ========================================
+       CONTAINER
+       ======================================== */
+    .container {
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 0 var(--gutter);
+    }
+
+    .container--narrow {
+      max-width: var(--container-narrow);
+      margin: 0 auto;
+      padding: 0 var(--gutter);
+    }
+
+    /* ========================================
+       WORDMARK
+       ======================================== */
+    .wordmark {
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 1.25rem;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .wordmark span {
+      color: var(--accent);
+    }
+
+    /* ========================================
+       HEADER / NAV
+       ======================================== */
+    .site-header {
+      padding: 28px 0;
+      position: relative;
+      z-index: 10;
+    }
+
+    .site-header .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .header-nav {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .header-link {
+      font-family: var(--font-body);
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .header-link:hover {
+      color: var(--text);
+    }
+
+    .header-link.active {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .header-cta {
+      font-family: var(--font-body);
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: var(--accent);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      padding: 8px 20px;
+      border: 1.5px solid var(--accent);
+      border-radius: 100px;
+      transition: all 0.25s ease;
+    }
+
+    .header-cta:hover {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    /* ========================================
+       HERO
+       ======================================== */
+    .about-hero {
+      padding: clamp(48px, 8vw, 80px) 0 0;
+      position: relative;
+    }
+
+    .about-hero .container {
+      position: relative;
+      z-index: 1;
+    }
+
+    .about-hero-content {
+      max-width: 600px;
+      margin-bottom: clamp(40px, 6vw, 64px);
+    }
+
+    .about-hero-label {
+      display: inline-block;
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 20px;
+    }
+
+    .about-hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.25rem, 5vw, 3.5rem);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      margin-bottom: 24px;
+    }
+
+    .about-hero h1 em {
+      font-style: italic;
+      color: var(--accent-dark);
+    }
+
+    .about-hero-sub {
+      font-size: clamp(1rem, 2vw, 1.125rem);
+      color: var(--text-secondary);
+      line-height: 1.8;
+    }
+
+    /* Hero Image */
+    .about-hero-image {
+      width: 100%;
+      border-radius: 20px;
+      overflow: hidden;
+      max-height: 480px;
+    }
+
+    .about-hero-image img {
+      width: 100%;
+      height: 100%;
+      max-height: 480px;
+      object-fit: cover;
+      object-position: center 40%;
+      display: block;
+    }
+
+    /* ========================================
+       SECTION DEFAULTS
+       ======================================== */
+    .section {
+      padding: var(--section-spacing) 0;
+    }
+
+    .section-label {
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+
+    .section h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.75rem, 4vw, 2.75rem);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      margin-bottom: 24px;
+    }
+
+    .section-divider {
+      width: 48px;
+      height: 2px;
+      background: var(--accent);
+      border-radius: 2px;
+      margin-bottom: 48px;
+    }
+
+    /* ========================================
+       STORY SECTION
+       ======================================== */
+    .story {
+      border-top: 1px solid var(--border-light);
+    }
+
+    .story-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+
+    .story-content p {
+      font-size: clamp(1rem, 1.8vw, 1.0625rem);
+      color: var(--text-secondary);
+      line-height: 1.85;
+      margin-bottom: 20px;
+    }
+
+    .story-content p:last-child {
+      margin-bottom: 0;
+    }
+
+    .story-pullquote {
+      font-family: var(--font-display);
+      font-size: clamp(1.25rem, 2.5vw, 1.625rem);
+      font-style: italic;
+      color: var(--accent-dark);
+      line-height: 1.5;
+      border-left: 3px solid var(--accent);
+      padding-left: 24px;
+      margin: 8px 0 24px;
+    }
+
+    @media (max-width: 768px) {
+      .story-content {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+    }
+
+    /* ========================================
+       VALUES / CARDS
+       ======================================== */
+    .values {
+      background: var(--bg-subtle);
+      border-top: 1px solid var(--border-light);
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      margin-top: 48px;
+    }
+
+    .value-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 40px 32px;
+      transition: all 0.3s ease;
+    }
+
+    .value-card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 4px 24px rgba(15, 118, 110, 0.06);
+    }
+
+    .value-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: var(--accent-bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+      color: var(--accent);
+    }
+
+    .value-card h3 {
+      font-family: var(--font-body);
+      font-size: 1.125rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+      color: var(--text);
+    }
+
+    .value-card p {
+      font-size: 0.9375rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    @media (max-width: 768px) {
+      .values-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+    }
+
+    /* ========================================
+       HOW WE WORK
+       ======================================== */
+    .process {
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 48px;
+      margin-top: 48px;
+    }
+
+    .process-step {
+      position: relative;
+    }
+
+    .process-step-number {
+      font-family: var(--font-display);
+      font-size: 3rem;
+      color: var(--accent-light);
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+
+    .process-step h3 {
+      font-family: var(--font-body);
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+
+    .process-step p {
+      font-size: 0.9375rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* Connector line between steps */
+    .process-step:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      top: 24px;
+      right: -24px;
+      width: calc(48px);
+      height: 1px;
+      background: var(--border);
+    }
+
+    @media (max-width: 768px) {
+      .process-steps {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+
+      .process-step:not(:last-child)::after {
+        display: none;
+      }
+    }
+
+    /* ========================================
+       CTA
+       ======================================== */
+    .about-cta {
+      background: var(--accent-bg);
+      border-top: 1px solid rgba(15, 118, 110, 0.08);
+      text-align: center;
+    }
+
+    .about-cta h2 {
+      font-family: var(--font-display);
+    }
+
+    .about-cta p {
+      font-size: 1.0625rem;
+      color: var(--text-secondary);
+      line-height: 1.75;
+      max-width: 520px;
+      margin: 0 auto 36px;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-body);
+      font-size: 1rem;
+      font-weight: 600;
+      color: #fff;
+      background: var(--accent);
+      border: none;
+      border-radius: 100px;
+      padding: 16px 40px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      letter-spacing: 0.01em;
+      box-shadow: 0 1px 3px rgba(15, 118, 110, 0.2), 0 8px 24px rgba(15, 118, 110, 0.15);
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-dark);
+      box-shadow: 0 1px 3px rgba(15, 118, 110, 0.25), 0 12px 32px rgba(15, 118, 110, 0.2);
+      transform: translateY(-1px);
+    }
+
+    .btn-primary svg {
+      transition: transform 0.25s ease;
+    }
+
+    .btn-primary:hover svg {
+      transform: translateX(3px);
+    }
+
+    /* ========================================
+       FOOTER
+       ======================================== */
+    .site-footer {
+      padding: 48px 0;
+      border-top: 1px solid var(--border-light);
+    }
+
+    .footer-inner {
+      text-align: center;
+    }
+
+    .footer-disclaimer {
+      font-size: 0.8125rem;
+      color: var(--text-light);
+      line-height: 1.75;
+      max-width: 680px;
+      margin: 20px auto 0;
+    }
+
+    .footer-copyright {
+      font-size: 0.8125rem;
+      color: var(--text-light);
+      margin-top: 24px;
+    }
+
+    /* ========================================
+       SCROLL REVEAL ANIMATIONS
+       ======================================== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 { transition-delay: 0.08s; }
+    .reveal-delay-2 { transition-delay: 0.16s; }
+    .reveal-delay-3 { transition-delay: 0.24s; }
+
+    /* Hero entrance */
+    .hero-reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: heroIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .hero-reveal-1 { animation-delay: 0.1s; }
+    .hero-reveal-2 { animation-delay: 0.2s; }
+    .hero-reveal-3 { animation-delay: 0.35s; }
+    .hero-reveal-4 { animation-delay: 0.5s; }
+
+    @keyframes heroIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ========================================
+       SELECTION HIGHLIGHT
+       ======================================== */
+    ::selection {
+      background: var(--accent-light);
+      color: var(--accent-dark);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top accent bar -->
+  <div class="top-bar" aria-hidden="true"></div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container">
+      <a href="/" class="wordmark" aria-label="IngredientList Home">Ingredient<span>List</span></a>
+      <nav class="header-nav">
+        <a href="about.html" class="header-link active">About</a>
+        <a href="index.html#signup" class="header-cta">Get Early Access</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- MODULE 1: Hero -->
+  <section class="about-hero">
+    <div class="container">
+      <div class="about-hero-content hero-reveal hero-reveal-1">
+        <p class="about-hero-label">About Us</p>
+        <h1>Transparency Starts <em>Here</em></h1>
+        <p class="about-hero-sub">We believe everyone deserves to know exactly what they're putting in their body. Not through marketing claims or influencer reviews — through clear, verifiable ingredient data.</p>
+      </div>
+      <div class="about-hero-image hero-reveal hero-reveal-3">
+        <img src="shopping-aisle.jpg" alt="Shopping aisle with health and wellness products" loading="eager" width="1120" height="480">
+      </div>
+    </div>
+  </section>
+
+  <!-- MODULE 2: Our Story -->
+  <section class="section story" id="story">
+    <div class="container">
+      <div class="reveal">
+        <p class="section-label">Our Story</p>
+        <h2>Why We Built IngredientList</h2>
+        <div class="section-divider"></div>
+      </div>
+      <div class="story-content">
+        <div class="reveal">
+          <p>It started with a simple question: <strong>"What's actually in this?"</strong></p>
+          <p>We were standing in a supplement aisle, staring at dozens of bottles with tiny labels and unfamiliar ingredients. We wanted to compare products, understand what we were buying, and find something that matched our specific needs. But there was nowhere to go.</p>
+          <p>Every search led to sponsored "top 10" lists, affiliate review sites, or forums full of conflicting opinions. No one was just showing us the ingredients. No one was making it easy to compare. No one was giving us the facts without an agenda.</p>
+        </div>
+        <div class="reveal reveal-delay-1">
+          <div class="story-pullquote">We decided to build the resource we wished existed. Not a review site. Not a marketplace. Just the facts.</div>
+          <p>IngredientList is a database built from the ground up to serve one purpose: give people direct access to what's inside the supplements they take. Every ingredient list sourced directly from each manufacturer. Every product categorized with precision. Every search designed for the way real people actually think.</p>
+          <p>We don't sell supplements. We don't accept sponsored placements. We don't make health claims. We just organize the data and make it searchable — so you can make informed decisions on your own terms.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODULE 3: What We Believe -->
+  <section class="section values" id="values">
+    <div class="container">
+      <div class="reveal" style="text-align: center;">
+        <p class="section-label">What Drives Us</p>
+        <h2>What We Believe</h2>
+      </div>
+      <div class="values-grid">
+        <div class="value-card reveal reveal-delay-1">
+          <div class="value-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+              <circle cx="12" cy="12" r="3"/>
+            </svg>
+          </div>
+          <h3>Transparency Over Everything</h3>
+          <p>If you're putting it in your body, you should know every single ingredient. No hidden proprietary blends, no vague "other ingredients." Just the full picture — always.</p>
+        </div>
+        <div class="value-card reveal reveal-delay-2">
+          <div class="value-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+          </div>
+          <h3>Independence Is Non-Negotiable</h3>
+          <p>We don't sell supplements. We don't accept sponsored placements. Our database exists for one reason: to give you the truth about what's inside. That's it.</p>
+        </div>
+        <div class="value-card reveal reveal-delay-3">
+          <div class="value-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"/>
+              <path d="M21 21l-4.35-4.35"/>
+              <path d="M11 8v6M8 11h6"/>
+            </svg>
+          </div>
+          <h3>Built for Real Questions</h3>
+          <p>People don't search in generics. They search "magnesium glycinate without fillers" or "protein powder safe for competition." We built our tools for the way people actually think.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODULE 4: How We Work -->
+  <section class="section process" id="process">
+    <div class="container">
+      <div class="reveal">
+        <p class="section-label">Our Process</p>
+        <h2>How We Build the Database</h2>
+        <div class="section-divider"></div>
+      </div>
+      <div class="process-steps">
+        <div class="process-step reveal reveal-delay-1">
+          <div class="process-step-number">01</div>
+          <h3>Source Directly</h3>
+          <p>Every ingredient list is sourced directly from the manufacturer — no third-party summaries, no shortcuts. The data you see is the data on the label.</p>
+        </div>
+        <div class="process-step reveal reveal-delay-2">
+          <div class="process-step-number">02</div>
+          <h3>Categorize With Precision</h3>
+          <p>We structure and tag every product by ingredient, category, and dietary need — so you can filter down to exactly what fits, no matter how specific your requirements.</p>
+        </div>
+        <div class="process-step reveal reveal-delay-3">
+          <div class="process-step-number">03</div>
+          <h3>Make It Searchable</h3>
+          <p>We build tools that match the way people actually search — include ingredients, exclude ingredients, compare side by side, and research the science behind what's inside.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODULE 5: CTA -->
+  <section class="section about-cta" id="cta">
+    <div class="container--narrow">
+      <div class="reveal">
+        <h2>Ready to See What's Inside?</h2>
+        <p>We're building the most comprehensive supplement ingredient database on the web. Join the waitlist and be the first to search.</p>
+        <a href="index.html#signup" class="btn-primary">
+          Get Early Access
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M3.33 8h9.34M8.67 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <a href="/" class="wordmark">Ingredient<span>List</span></a>
+        <p class="footer-disclaimer">IngredientList is for informational purposes only and does not provide medical advice, diagnosis, or treatment. Supplement ingredient data is sourced directly from each manufacturer. Always consult a qualified healthcare provider before making decisions about dietary supplements.</p>
+        <p class="footer-copyright" style="margin-top:16px;">300 SE 2nd St, Suite 601, Fort Lauderdale, FL 33301</p>
+        <p class="footer-copyright">&copy; 2026 IngredientList.com. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll Reveal -->
+  <script>
+    (function() {
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+      document.querySelectorAll('.reveal').forEach(function(el) {
+        observer.observe(el);
+      });
+    })();
+  </script>
+
+</body>
+</html>
