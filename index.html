@@ -1,23 +1,931 @@
 <!DOCTYPE html>
-
-<html>
+<html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-  <title>Spoon-Knife</title>
-  <LINK href="styles.css" rel="stylesheet" type="text/css">
-</head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IngredientList — Free Supplement Ingredient Database | Look Up Any Supplement</title>
+  <meta name="description" content="Look up the complete ingredient list for any dietary supplement. Free, independent database sourced directly from manufacturers. Search, compare, and research thousands of supplements.">
+  <link rel="canonical" href="https://ingredientlist.com">
 
+  <!-- Open Graph -->
+  <meta property="og:title" content="IngredientList — Free Supplement Ingredient Database">
+  <meta property="og:description" content="The free, independent supplement ingredient database. Search, compare, and research what's really inside your supplements.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ingredientlist.com">
+
+  <!-- JSON-LD Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "IngredientList",
+    "url": "https://ingredientlist.com",
+    "description": "Free, independent supplement ingredient database sourced directly from manufacturers. Search, compare, and research thousands of supplements.",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://ingredientlist.com/search?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "IngredientList",
+    "url": "https://ingredientlist.com",
+    "description": "The free, independent supplement ingredient database. Search, compare, and research what's really inside your supplements.",
+    "knowsAbout": [
+      "dietary supplements",
+      "supplement ingredients",
+      "supplement facts",
+      "nutritional supplements",
+      "ingredient research",
+      "supplement comparison"
+    ]
+  }
+  </script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ========================================
+       RESET & BASE
+       ======================================== */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --accent: #0F766E;
+      --accent-dark: #0D5F59;
+      --accent-light: #CCFBF1;
+      --accent-bg: #F0FDFA;
+      --text: #111827;
+      --text-secondary: #374151;
+      --text-muted: #6B7280;
+      --text-light: #9CA3AF;
+      --bg: #FFFFFF;
+      --bg-subtle: #FAFAFA;
+      --border: #E5E7EB;
+      --border-light: #F3F4F6;
+
+      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-display: 'Instrument Serif', Georgia, serif;
+
+      --container: 1120px;
+      --container-narrow: 720px;
+      --section-spacing: clamp(80px, 10vw, 140px);
+      --gutter: clamp(20px, 5vw, 40px);
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.7;
+      font-size: 16px;
+      overflow-x: hidden;
+    }
+
+    /* ========================================
+       TOP ACCENT BAR
+       ======================================== */
+    .top-bar {
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), #14B8A6, var(--accent));
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+    }
+
+    /* ========================================
+       CONTAINER
+       ======================================== */
+    .container {
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 0 var(--gutter);
+    }
+
+    .container--narrow {
+      max-width: var(--container-narrow);
+      margin: 0 auto;
+      padding: 0 var(--gutter);
+    }
+
+    /* ========================================
+       WORDMARK
+       ======================================== */
+    .wordmark {
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 1.25rem;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .wordmark span {
+      color: var(--accent);
+    }
+
+    /* ========================================
+       HEADER / NAV
+       ======================================== */
+    .site-header {
+      padding: 28px 0;
+      position: relative;
+      z-index: 10;
+    }
+
+    .site-header .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .header-cta {
+      font-family: var(--font-body);
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: var(--accent);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      padding: 8px 20px;
+      border: 1.5px solid var(--accent);
+      border-radius: 100px;
+      transition: all 0.25s ease;
+    }
+
+    .header-cta:hover {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    /* ========================================
+       HERO
+       ======================================== */
+    .hero {
+      padding: clamp(60px, 10vw, 120px) 0 var(--section-spacing);
+      text-align: center;
+      position: relative;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -200px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 800px;
+      background: radial-gradient(ellipse, rgba(15, 118, 110, 0.04) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .hero .container {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-label {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 32px;
+      padding: 6px 16px;
+      background: var(--accent-bg);
+      border-radius: 100px;
+    }
+
+    .hero h1 {
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: clamp(2.5rem, 6vw, 4.25rem);
+      line-height: 1.08;
+      letter-spacing: -0.035em;
+      color: var(--text);
+      margin-bottom: 28px;
+      max-width: 780px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero h1 em {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-weight: 400;
+      letter-spacing: -0.01em;
+      color: var(--accent-dark);
+    }
+
+    .hero-sub {
+      font-size: clamp(1rem, 2vw, 1.1875rem);
+      color: var(--text-secondary);
+      line-height: 1.75;
+      max-width: 600px;
+      margin: 0 auto 44px;
+    }
+
+    .hero-sub strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-body);
+      font-size: 1rem;
+      font-weight: 600;
+      color: #fff;
+      background: var(--accent);
+      border: none;
+      border-radius: 100px;
+      padding: 16px 40px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      letter-spacing: 0.01em;
+      box-shadow: 0 1px 3px rgba(15, 118, 110, 0.2), 0 8px 24px rgba(15, 118, 110, 0.15);
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-dark);
+      box-shadow: 0 1px 3px rgba(15, 118, 110, 0.25), 0 12px 32px rgba(15, 118, 110, 0.2);
+      transform: translateY(-1px);
+    }
+
+    .btn-primary svg {
+      transition: transform 0.25s ease;
+    }
+
+    .btn-primary:hover svg {
+      transform: translateX(3px);
+    }
+
+    /* ========================================
+       SECTION DEFAULTS
+       ======================================== */
+    .section {
+      padding: var(--section-spacing) 0;
+    }
+
+    .section-label {
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+
+    .section h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.75rem, 4vw, 2.75rem);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      margin-bottom: 24px;
+    }
+
+    .section-divider {
+      width: 48px;
+      height: 2px;
+      background: var(--accent);
+      border-radius: 2px;
+      margin-bottom: 48px;
+    }
+
+    /* ========================================
+       PROBLEM SECTION
+       ======================================== */
+    .problem {
+      border-top: 1px solid var(--border-light);
+    }
+
+    .problem-content p {
+      font-size: clamp(1rem, 1.8vw, 1.125rem);
+      color: var(--text-secondary);
+      line-height: 1.85;
+      margin-bottom: 24px;
+    }
+
+    .problem-content p:last-child {
+      margin-bottom: 0;
+    }
+
+    .problem-content strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .problem-highlight {
+      font-family: var(--font-display);
+      font-size: clamp(1.125rem, 2vw, 1.375rem);
+      font-style: italic;
+      color: var(--accent-dark);
+      line-height: 1.6;
+      border-left: 3px solid var(--accent);
+      padding-left: 24px;
+      margin: 36px 0;
+    }
+
+    /* ========================================
+       PILLARS / CARDS
+       ======================================== */
+    .pillars {
+      background: var(--bg-subtle);
+      border-top: 1px solid var(--border-light);
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      margin-top: 48px;
+    }
+
+    .pillar-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 40px 32px;
+      transition: all 0.3s ease;
+    }
+
+    .pillar-card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 4px 24px rgba(15, 118, 110, 0.06);
+    }
+
+    .pillar-number {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      color: var(--accent-light);
+      line-height: 1;
+      margin-bottom: 20px;
+    }
+
+    .pillar-card h3 {
+      font-family: var(--font-body);
+      font-size: 1.125rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+      color: var(--text);
+    }
+
+    .pillar-card p {
+      font-size: 0.9375rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    @media (max-width: 768px) {
+      .pillars-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+    }
+
+    /* ========================================
+       PERSONAS
+       ======================================== */
+    .personas {
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .persona-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 48px;
+    }
+
+    .persona-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.9375rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 14px 24px;
+      transition: all 0.25s ease;
+      cursor: default;
+    }
+
+    .persona-pill:hover {
+      border-color: var(--accent);
+      color: var(--accent-dark);
+      background: var(--accent-bg);
+    }
+
+    .persona-pill::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+      opacity: 0.5;
+      transition: opacity 0.25s ease;
+    }
+
+    .persona-pill:hover::before {
+      opacity: 1;
+    }
+
+    @media (max-width: 640px) {
+      .persona-pill {
+        font-size: 0.875rem;
+        padding: 12px 20px;
+      }
+    }
+
+    /* ========================================
+       TRUST / DATA
+       ======================================== */
+    .trust {
+      background: var(--accent-bg);
+      border-top: 1px solid rgba(15, 118, 110, 0.08);
+      border-bottom: 1px solid rgba(15, 118, 110, 0.08);
+    }
+
+    .trust-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+      margin-top: 48px;
+    }
+
+    .trust-content p {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+
+    .trust-content p:last-child {
+      margin-bottom: 0;
+    }
+
+    .trust-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--accent-dark);
+      background: rgba(15, 118, 110, 0.08);
+      padding: 12px 20px;
+      border-radius: 12px;
+      margin-top: 8px;
+    }
+
+    .trust-badge svg {
+      flex-shrink: 0;
+    }
+
+    .precision-quote {
+      font-family: var(--font-display);
+      font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+      font-style: italic;
+      color: var(--accent-dark);
+      line-height: 1.5;
+      margin: 0 0 24px;
+      padding: 0;
+      border: none;
+    }
+
+    @media (max-width: 768px) {
+      .trust-content {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+    }
+
+    /* ========================================
+       CTA / SIGNUP
+       ======================================== */
+    .cta {
+      background: var(--text);
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(ellipse at 30% 50%, rgba(15, 118, 110, 0.15) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .cta .container--narrow {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+
+    .cta h2 {
+      color: #fff;
+      font-family: var(--font-display);
+    }
+
+    .cta .section-label {
+      color: #14B8A6;
+    }
+
+    .cta-sub {
+      font-size: 1.0625rem;
+      color: rgba(255, 255, 255, 0.7);
+      line-height: 1.75;
+      max-width: 520px;
+      margin: 0 auto 40px;
+    }
+
+    .signup-form {
+      display: flex;
+      gap: 12px;
+      max-width: 460px;
+      margin: 0 auto;
+    }
+
+    .signup-form input[type="email"] {
+      flex: 1;
+      font-family: var(--font-body);
+      font-size: 1rem;
+      color: var(--text);
+      background: #fff;
+      border: 2px solid transparent;
+      border-radius: 100px;
+      padding: 16px 24px;
+      outline: none;
+      transition: border-color 0.25s ease;
+    }
+
+    .signup-form input[type="email"]::placeholder {
+      color: var(--text-light);
+    }
+
+    .signup-form input[type="email"]:focus {
+      border-color: var(--accent);
+    }
+
+    .signup-form button {
+      font-family: var(--font-body);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text);
+      background: #14B8A6;
+      border: none;
+      border-radius: 100px;
+      padding: 16px 32px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.25s ease;
+      letter-spacing: 0.01em;
+    }
+
+    .signup-form button:hover {
+      background: #0D9488;
+      color: #fff;
+    }
+
+    .privacy-note {
+      font-size: 0.8125rem;
+      color: rgba(255, 255, 255, 0.4);
+      margin-top: 20px;
+      line-height: 1.6;
+    }
+
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 24px 0;
+    }
+
+    .form-success.visible {
+      display: block;
+    }
+
+    .form-success p {
+      font-size: 1.125rem;
+      color: #14B8A6;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .form-success span {
+      font-size: 0.9375rem;
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    @media (max-width: 520px) {
+      .signup-form {
+        flex-direction: column;
+      }
+
+      .signup-form button {
+        padding: 16px;
+      }
+    }
+
+    /* ========================================
+       FOOTER
+       ======================================== */
+    .site-footer {
+      padding: 48px 0;
+      border-top: 1px solid var(--border-light);
+    }
+
+    .footer-inner {
+      text-align: center;
+    }
+
+    .footer-disclaimer {
+      font-size: 0.8125rem;
+      color: var(--text-light);
+      line-height: 1.75;
+      max-width: 680px;
+      margin: 20px auto 0;
+    }
+
+    .footer-copyright {
+      font-size: 0.8125rem;
+      color: var(--text-light);
+      margin-top: 24px;
+    }
+
+    /* ========================================
+       SCROLL REVEAL ANIMATIONS
+       ======================================== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 { transition-delay: 0.08s; }
+    .reveal-delay-2 { transition-delay: 0.16s; }
+    .reveal-delay-3 { transition-delay: 0.24s; }
+    .reveal-delay-4 { transition-delay: 0.32s; }
+    .reveal-delay-5 { transition-delay: 0.40s; }
+
+    /* Hero entrance */
+    .hero-reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: heroIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .hero-reveal-1 { animation-delay: 0.1s; }
+    .hero-reveal-2 { animation-delay: 0.2s; }
+    .hero-reveal-3 { animation-delay: 0.35s; }
+    .hero-reveal-4 { animation-delay: 0.5s; }
+
+    @keyframes heroIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ========================================
+       SELECTION HIGHLIGHT
+       ======================================== */
+    ::selection {
+      background: var(--accent-light);
+      color: var(--accent-dark);
+    }
+  </style>
+</head>
 <body>
 
-<img src="forkit.gif" id="octocat" alt="" />
+  <!-- Top accent bar -->
+  <div class="top-bar" aria-hidden="true"></div>
 
-<!-- Feel free to change this text here -->
-<p>
-  Fork me? Fork you, @octocat!
-</p>
-<p>
-  Sean made a change
-</p>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container">
+      <a href="/" class="wordmark" aria-label="IngredientList Home">Ingredient<span>List</span></a>
+      <a href="#signup" class="header-cta">Get Early Access</a>
+    </div>
+  </header>
+
+  <!-- MODULE 1: Hero -->
+  <section class="hero" id="hero">
+    <div class="container">
+      <div class="hero-label hero-reveal hero-reveal-1">Coming Soon</div>
+      <h1 class="hero-reveal hero-reveal-2">Know What's In Your <em>Supplements</em></h1>
+      <p class="hero-sub hero-reveal hero-reveal-3">
+        <strong>IngredientList</strong> is the free, independent supplement ingredient database. Every ingredient list sourced directly from each manufacturer — categorized with precision so you can find exactly what you need.
+      </p>
+      <a href="#signup" class="btn-primary hero-reveal hero-reveal-4">
+        Get Early Access
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M3.33 8h9.34M8.67 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- MODULE 2: The Problem -->
+  <section class="section problem" id="why">
+    <div class="container--narrow">
+      <div class="reveal">
+        <p class="section-label">Why We Exist</p>
+        <h2>Supplement Labels Shouldn't Be a Mystery</h2>
+        <div class="section-divider"></div>
+      </div>
+      <div class="problem-content">
+        <p class="reveal">Every year, millions of people buy dietary supplements without fully understanding what's inside them. Labels are small, ingredient names are unfamiliar, and finding reliable, unbiased information shouldn't require a chemistry degree.</p>
+
+        <div class="problem-highlight reveal">No sponsored rankings. No marketing spin. Just clear, factual ingredient data sourced directly from each manufacturer.</div>
+
+        <p class="reveal">IngredientList was built to solve that problem. We're creating the most comprehensive, searchable supplement ingredient database on the web — a single place where anyone can look up, compare, and research exactly what's in the products they take every day.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODULE 3: What We Do — Three Pillars -->
+  <section class="section pillars" id="features">
+    <div class="container">
+      <div class="reveal" style="text-align: center;">
+        <p class="section-label">What You'll Find</p>
+        <h2>What You'll Find Here</h2>
+      </div>
+      <div class="pillars-grid">
+        <div class="pillar-card reveal reveal-delay-1">
+          <div class="pillar-number">01</div>
+          <h3>Complete Ingredient Lists</h3>
+          <p>Search thousands of dietary supplements and view their full ingredient lists — active ingredients, other ingredients, and supplement facts — sourced directly from each manufacturer.</p>
+        </div>
+        <div class="pillar-card reveal reveal-delay-2">
+          <div class="pillar-number">02</div>
+          <h3>Side-by-Side Comparison</h3>
+          <p>Compare any two products in a clean, easy-to-read format. See exactly where they differ — ingredients, dosages, fillers — so you can make the right choice without the guesswork.</p>
+        </div>
+        <div class="pillar-card reveal reveal-delay-3">
+          <div class="pillar-number">03</div>
+          <h3>In-Depth Ingredient Research</h3>
+          <p>Go beyond the label. Understand the science behind every ingredient in your supplements — what it does, how it works, and why it's there.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODULE 4: Who It's For -->
+  <section class="section personas" id="who">
+    <div class="container">
+      <div class="reveal">
+        <p class="section-label">Who It's For</p>
+        <h2>Built for People Who Read Labels</h2>
+        <div class="section-divider"></div>
+      </div>
+      <div class="persona-grid">
+        <div class="persona-pill reveal reveal-delay-1">Supplement shoppers comparing products</div>
+        <div class="persona-pill reveal reveal-delay-2">Parents checking their family's vitamins</div>
+        <div class="persona-pill reveal reveal-delay-3">Athletes verifying ingredients before competition</div>
+        <div class="persona-pill reveal reveal-delay-4">Health practitioners looking up formulations</div>
+        <div class="persona-pill reveal reveal-delay-5">Researchers &amp; writers needing authoritative references</div>
+        <div class="persona-pill reveal reveal-delay-5">Anyone who believes in knowing what they put in their body</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODULE 5: Precision -->
+  <section class="section trust" id="precision">
+    <div class="container">
+      <div class="reveal">
+        <p class="section-label">Precision Search</p>
+        <h2>Find Exactly What You're Looking For</h2>
+        <div class="section-divider"></div>
+      </div>
+      <div class="trust-content">
+        <div class="reveal">
+          <p>Every product in our database is categorized with precision — by ingredient, by category, by dietary need — so you can filter down to exactly what fits your requirements, no matter how specific.</p>
+          <p>Whether you're avoiding a single filler, following a strict dietary protocol, or hunting for a specific active ingredient at a specific dosage — our search was built for you.</p>
+        </div>
+        <div class="reveal reveal-delay-2">
+          <blockquote class="precision-quote">
+            "Looking for keto snacks sweetened with monk fruit — but without erythritol? We've got you covered."
+          </blockquote>
+          <div class="trust-badge">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <path d="M9 3.5L5.5 7 9 10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M11 3.5L14.5 7 11 10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M4 14.5h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M4 17h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            Include &amp; exclude ingredients to narrow your search
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODULE 6: Email Signup -->
+  <section class="section cta" id="signup">
+    <div class="container--narrow">
+      <div class="reveal">
+        <p class="section-label">Early Access</p>
+        <h2>Be the First to Search</h2>
+      </div>
+      <p class="cta-sub reveal">We're building the most comprehensive supplement ingredient database on the web. Sign up to get notified when the full site goes live — plus early access to search tools, ingredient guides, and more.</p>
+
+      <form class="signup-form reveal" id="signup-form" action="#" method="POST">
+        <input type="email" name="email" placeholder="your@email.com" required autocomplete="email" aria-label="Email address">
+        <button type="submit">Notify Me</button>
+      </form>
+      <p class="privacy-note reveal">We'll only email you about the launch. No spam, no selling your data. Unsubscribe anytime.</p>
+
+      <div class="form-success" id="form-success">
+        <p>You're on the list!</p>
+        <span>We'll let you know when IngredientList goes live.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODULE 7: Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <a href="/" class="wordmark">Ingredient<span>List</span></a>
+        <p class="footer-disclaimer">IngredientList is for informational purposes only and does not provide medical advice, diagnosis, or treatment. Supplement ingredient data is sourced directly from each manufacturer. Always consult a qualified healthcare provider before making decisions about dietary supplements.</p>
+        <p class="footer-copyright">&copy; 2026 IngredientList.com. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll Reveal & Form Handling -->
+  <script>
+    (function() {
+      // Scroll reveal
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+      document.querySelectorAll('.reveal').forEach(function(el) {
+        observer.observe(el);
+      });
+
+      // Form handling
+      var form = document.getElementById('signup-form');
+      var success = document.getElementById('form-success');
+
+      if (form) {
+        form.addEventListener('submit', function(e) {
+          e.preventDefault();
+          form.style.display = 'none';
+          document.querySelector('.privacy-note').style.display = 'none';
+          success.classList.add('visible');
+        });
+      }
+    })();
+  </script>
 
 </body>
 </html>
