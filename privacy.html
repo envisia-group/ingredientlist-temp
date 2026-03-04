@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy — IngredientList</title>
+  <meta name="description" content="IngredientList privacy policy. Learn how we collect, use, and protect your personal information.">
+  <link rel="canonical" href="https://ingredientlist.com/privacy">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Privacy Policy — IngredientList">
+  <meta property="og:description" content="Learn how IngredientList collects, uses, and protects your personal information.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ingredientlist.com/privacy">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --accent: #0F766E;
+      --accent-dark: #0D5F59;
+      --accent-light: #CCFBF1;
+      --accent-bg: #F0FDFA;
+      --text: #111827;
+      --text-secondary: #374151;
+      --text-muted: #6B7280;
+      --text-light: #9CA3AF;
+      --bg: #FFFFFF;
+      --bg-subtle: #FAFAFA;
+      --border: #E5E7EB;
+      --border-light: #F3F4F6;
+      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-display: 'Instrument Serif', Georgia, serif;
+      --container: 1120px;
+      --container-narrow: 720px;
+      --gutter: clamp(20px, 5vw, 40px);
+    }
+
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    body { font-family: var(--font-body); color: var(--text); background: var(--bg); line-height: 1.7; font-size: 16px; overflow-x: hidden; }
+
+    .top-bar { height: 3px; background: linear-gradient(90deg, var(--accent), #14B8A6, var(--accent)); position: fixed; top: 0; left: 0; right: 0; z-index: 100; }
+    .container { max-width: var(--container); margin: 0 auto; padding: 0 var(--gutter); }
+    .container--narrow { max-width: var(--container-narrow); margin: 0 auto; padding: 0 var(--gutter); }
+
+    .wordmark { font-family: var(--font-body); font-weight: 700; font-size: 1.25rem; letter-spacing: -0.03em; color: var(--text); text-decoration: none; display: inline-block; }
+    .wordmark span { color: var(--accent); }
+
+    .site-header { padding: 28px 0; position: relative; z-index: 10; }
+    .site-header .container { display: flex; align-items: center; justify-content: space-between; }
+    .header-nav { display: flex; align-items: center; gap: 28px; }
+    .header-link { font-family: var(--font-body); font-size: 0.875rem; font-weight: 500; color: var(--text-muted); text-decoration: none; transition: color 0.2s ease; }
+    .header-link:hover { color: var(--text); }
+    .header-cta { font-family: var(--font-body); font-size: 0.8125rem; font-weight: 600; color: var(--accent); text-decoration: none; letter-spacing: 0.02em; padding: 8px 20px; border: 1.5px solid var(--accent); border-radius: 100px; transition: all 0.25s ease; }
+    .header-cta:hover { background: var(--accent); color: #fff; }
+
+    /* Legal page styles */
+    .legal-hero {
+      padding: clamp(48px, 8vw, 80px) 0 clamp(40px, 6vw, 64px);
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .legal-hero-label {
+      display: inline-block;
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 20px;
+    }
+
+    .legal-hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.25rem, 5vw, 3.5rem);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+
+    .legal-hero .effective-date {
+      font-size: 0.9375rem;
+      color: var(--text-muted);
+    }
+
+    .legal-content {
+      padding: clamp(48px, 6vw, 80px) 0 clamp(80px, 10vw, 140px);
+    }
+
+    .legal-content h2 {
+      font-family: var(--font-body);
+      font-size: 1.375rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      margin-top: 48px;
+      margin-bottom: 16px;
+      padding-top: 32px;
+      border-top: 1px solid var(--border-light);
+    }
+
+    .legal-content h2:first-child {
+      margin-top: 0;
+      padding-top: 0;
+      border-top: none;
+    }
+
+    .legal-content h3 {
+      font-family: var(--font-body);
+      font-size: 1.0625rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-top: 28px;
+      margin-bottom: 10px;
+    }
+
+    .legal-content p {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      line-height: 1.85;
+      margin-bottom: 16px;
+    }
+
+    .legal-content ul, .legal-content ol {
+      margin-bottom: 16px;
+      padding-left: 24px;
+    }
+
+    .legal-content li {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      line-height: 1.85;
+      margin-bottom: 8px;
+    }
+
+    .legal-content a {
+      color: var(--accent);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      transition: color 0.2s;
+    }
+
+    .legal-content a:hover {
+      color: var(--accent-dark);
+    }
+
+    .legal-content strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .legal-toc {
+      background: var(--bg-subtle);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px 32px;
+      margin-bottom: 48px;
+    }
+
+    .legal-toc p {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 12px;
+    }
+
+    .legal-toc ol {
+      padding-left: 20px;
+      margin-bottom: 0;
+    }
+
+    .legal-toc li {
+      font-size: 0.9375rem;
+      margin-bottom: 6px;
+    }
+
+    .legal-toc a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .legal-toc a:hover {
+      text-decoration: underline;
+    }
+
+    .site-footer { padding: 48px 0; border-top: 1px solid var(--border-light); }
+    .footer-inner { text-align: center; }
+    .footer-disclaimer { font-size: 0.8125rem; color: var(--text-light); line-height: 1.75; max-width: 680px; margin: 20px auto 0; }
+    .footer-copyright { font-size: 0.8125rem; color: var(--text-light); margin-top: 24px; }
+    .footer-links { display: flex; justify-content: center; gap: 24px; margin-top: 16px; }
+    .footer-links a { font-size: 0.8125rem; color: var(--text-light); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--accent); }
+
+    ::selection { background: var(--accent-light); color: var(--accent-dark); }
+  </style>
+</head>
+<body>
+
+  <div class="top-bar" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="container">
+      <a href="/" class="wordmark" aria-label="IngredientList Home">Ingredient<span>List</span></a>
+      <nav class="header-nav">
+        <a href="about.html" class="header-link">About</a>
+        <a href="index.html#signup" class="header-cta">Get Early Access</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="legal-hero">
+    <div class="container--narrow">
+      <p class="legal-hero-label">Legal</p>
+      <h1>Privacy Policy</h1>
+      <p class="effective-date">Effective date: March 4, 2026</p>
+    </div>
+  </section>
+
+  <section class="legal-content">
+    <div class="container--narrow">
+
+      <div class="legal-toc">
+        <p>Contents</p>
+        <ol>
+          <li><a href="#overview">Overview</a></li>
+          <li><a href="#information-we-collect">Information We Collect</a></li>
+          <li><a href="#how-we-use">How We Use Your Information</a></li>
+          <li><a href="#cookies">Cookies &amp; Tracking Technologies</a></li>
+          <li><a href="#sharing">Third-Party Service Providers</a></li>
+          <li><a href="#data-retention">Data Retention</a></li>
+          <li><a href="#data-security">Data Security</a></li>
+          <li><a href="#your-rights">Your Rights &amp; Choices</a></li>
+          <li><a href="#california">California Privacy Rights</a></li>
+          <li><a href="#children">Children's Privacy</a></li>
+          <li><a href="#dnt">Do Not Track Signals</a></li>
+          <li><a href="#third-party-links">Links to Third-Party Websites</a></li>
+          <li><a href="#changes">Changes to This Policy</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+        </ol>
+      </div>
+
+      <h2 id="overview">1. Overview</h2>
+      <p>IngredientList ("we," "us," or "our") operates the website <strong>ingredientlist.com</strong> (the "Site"). This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our Site.</p>
+      <p>IngredientList is a free, informational supplement ingredient database. We are not an e-commerce platform and do not sell supplements or health products. Our address is 300 SE 2nd St, Suite 601, Fort Lauderdale, FL 33301.</p>
+      <p>By using the Site, you agree to the collection and use of information in accordance with this policy. If you do not agree, please do not use the Site.</p>
+
+      <h2 id="information-we-collect">2. Information We Collect</h2>
+
+      <h3>Information You Provide Directly</h3>
+      <ul>
+        <li><strong>Email address</strong> — submitted through our waitlist or early access signup form</li>
+      </ul>
+      <p>We do not collect your name, payment information, health data, or any other personal details through the signup form.</p>
+
+      <h3>Information Collected Automatically</h3>
+      <p>When you visit the Site, we may automatically collect certain information about your device and usage, including:</p>
+      <ul>
+        <li>IP address</li>
+        <li>Browser type and version</li>
+        <li>Operating system</li>
+        <li>Device type (desktop, mobile, tablet)</li>
+        <li>Referring URL</li>
+        <li>Pages visited and time spent on each page</li>
+        <li>Date and time of your visit</li>
+        <li>Cookie identifiers and similar tracking identifiers</li>
+      </ul>
+
+      <h2 id="how-we-use">3. How We Use Your Information</h2>
+      <p>We use the information we collect for the following purposes:</p>
+      <ul>
+        <li><strong>Email address:</strong> To send waitlist confirmations, early access notifications, and occasional product updates related to IngredientList. Every email includes an unsubscribe option.</li>
+        <li><strong>Analytics data:</strong> To understand how visitors use the Site, improve content and navigation, diagnose technical issues, and measure site performance.</li>
+        <li><strong>IP address and device data:</strong> For security monitoring, fraud prevention, and aggregate demographic analysis.</li>
+      </ul>
+      <p><strong>We do not</strong> use your information for targeted advertising, sell it to third parties, or create individual user profiles for commercial purposes.</p>
+
+      <h2 id="cookies">4. Cookies &amp; Tracking Technologies</h2>
+      <p>Cookies are small text files stored on your device when you visit a website. We use the following types of cookies:</p>
+      <ul>
+        <li><strong>Strictly necessary cookies:</strong> Required for the Site to function properly (e.g., session management).</li>
+        <li><strong>Analytics cookies:</strong> Help us understand how visitors interact with the Site (e.g., Google Analytics). These cookies collect information in an aggregated, anonymous form.</li>
+      </ul>
+      <p>We do <strong>not</strong> use advertising, retargeting, or marketing cookies.</p>
+
+      <h3>Managing Cookies</h3>
+      <p>You can control cookies through your browser settings. Most browsers allow you to block or delete cookies. Please note that disabling certain cookies may affect your experience on the Site.</p>
+      <p>If we use Google Analytics, you can opt out by installing the <a href="https://tools.google.com/dlpage/gaoptout" rel="noopener noreferrer" target="_blank">Google Analytics Opt-out Browser Add-on</a>.</p>
+
+      <h2 id="sharing">5. Third-Party Service Providers</h2>
+      <p>We may share your information with a limited number of third-party service providers who assist in operating the Site. These providers process data on our behalf and are contractually obligated to protect your information:</p>
+      <ul>
+        <li><strong>Analytics provider</strong> (e.g., Google Analytics) — receives anonymized usage data to help us understand site traffic and behavior.</li>
+        <li><strong>Email service provider</strong> — processes email addresses collected through the waitlist to deliver communications on our behalf.</li>
+        <li><strong>Hosting provider</strong> — server logs may include IP addresses and are retained for a limited period for security and operational purposes.</li>
+      </ul>
+      <p><strong>We do not sell, rent, or trade your personal information to third parties for their own marketing purposes.</strong></p>
+      <p>We may disclose your information if required to do so by law, in response to a valid legal process (such as a subpoena or court order), or to protect the rights, property, or safety of IngredientList, our users, or the public.</p>
+      <p>In the event of a business transfer (merger, acquisition, or sale of assets), user data may be transferred. We will notify users if this occurs.</p>
+
+      <h2 id="data-retention">6. Data Retention</h2>
+      <ul>
+        <li><strong>Email addresses:</strong> Retained until you unsubscribe or request deletion, or until the waitlist is closed.</li>
+        <li><strong>Analytics data:</strong> Retained per the default settings of our analytics provider (typically 14 months for user-level data).</li>
+        <li><strong>Server logs:</strong> Retained for up to 90 days for security and operational purposes.</li>
+      </ul>
+
+      <h2 id="data-security">7. Data Security</h2>
+      <p>We take reasonable measures to protect your information, including HTTPS/TLS encryption for all data in transit, access controls for internal systems, and the use of reputable third-party infrastructure providers.</p>
+      <p>However, no method of transmission over the Internet or electronic storage is 100% secure. While we strive to protect your personal information, we cannot guarantee absolute security.</p>
+
+      <h2 id="your-rights">8. Your Rights &amp; Choices</h2>
+      <p>Depending on your location, you may have the following rights regarding your personal information:</p>
+      <ul>
+        <li><strong>Access:</strong> Request to know what personal data we hold about you.</li>
+        <li><strong>Deletion:</strong> Request that we delete your personal data.</li>
+        <li><strong>Correction:</strong> Request that inaccurate data be corrected.</li>
+        <li><strong>Unsubscribe:</strong> Opt out of email communications at any time using the unsubscribe link in any email, or by contacting us directly. We will honor requests within 10 business days.</li>
+        <li><strong>Cookie opt-out:</strong> Manage or disable cookies through your browser settings.</li>
+      </ul>
+      <p>To exercise any of these rights, please <a href="contact.html">contact us</a>. We will respond within 45 days of receiving your request.</p>
+
+      <h2 id="california">9. California Privacy Rights</h2>
+      <p>If you are a California resident, you have additional rights under the California Consumer Privacy Act (CCPA) and the California Online Privacy Protection Act (CalOPPA):</p>
+      <ul>
+        <li><strong>Right to know</strong> the categories of personal information we collect and the purposes for which it is used.</li>
+        <li><strong>Right to deletion</strong> of your personal information.</li>
+        <li><strong>Right to opt-out of the sale of personal information.</strong> We do not sell personal information.</li>
+        <li><strong>Right to non-discrimination</strong> for exercising your privacy rights.</li>
+      </ul>
+      <p>Under California's "Shine the Light" law (Civil Code Section 1798.83), we confirm that we do not share personal information with third parties for their direct marketing purposes.</p>
+
+      <h2 id="children">10. Children's Privacy</h2>
+      <p>The Site is not directed to children under the age of 13 and we do not knowingly collect personal information from children under 13. If we become aware that a child under 13 has submitted personal information (such as an email address), we will delete it promptly.</p>
+      <p>If you are a parent or guardian and believe your child has provided us with personal information, please <a href="contact.html">contact us</a>.</p>
+
+      <h2 id="dnt">11. Do Not Track Signals</h2>
+      <p>Our Site does not currently respond to "Do Not Track" (DNT) browser signals. We disclose our data collection and use practices in this Privacy Policy so you can make informed choices about your privacy.</p>
+
+      <h2 id="third-party-links">12. Links to Third-Party Websites</h2>
+      <p>The Site may contain links to third-party websites (such as manufacturer websites or research sources). We are not responsible for the privacy practices or content of these external sites. We encourage you to review the privacy policies of any third-party site you visit.</p>
+
+      <h2 id="changes">13. Changes to This Policy</h2>
+      <p>We may update this Privacy Policy from time to time. When we make material changes, we will update the "Effective date" at the top of this page. If you are on our email list, we may also notify you by email of significant changes.</p>
+      <p>Your continued use of the Site after changes are posted constitutes acceptance of the revised policy.</p>
+
+      <h2 id="contact">14. Contact Us</h2>
+      <p>If you have questions about this Privacy Policy or wish to exercise your privacy rights, please contact us:</p>
+      <ul>
+        <li><strong>Email:</strong> <a href="contact.html">Contact us</a></li>
+        <li><strong>Address:</strong> IngredientList, 300 SE 2nd St, Suite 601, Fort Lauderdale, FL 33301</li>
+      </ul>
+
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <a href="/" class="wordmark">Ingredient<span>List</span></a>
+        <p class="footer-disclaimer">IngredientList is for informational purposes only and does not provide medical advice, diagnosis, or treatment. Supplement ingredient data is sourced directly from each manufacturer. Always consult a qualified healthcare provider before making decisions about dietary supplements.</p>
+        <div class="footer-links">
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms &amp; Conditions</a>
+        </div>
+        <p class="footer-copyright" style="margin-top:16px;">300 SE 2nd St, Suite 601, Fort Lauderdale, FL 33301</p>
+        <p class="footer-copyright">&copy; 2026 IngredientList.com. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
